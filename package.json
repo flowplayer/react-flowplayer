@@ -1,0 +1,13 @@
+{
+  "name": "react-flowplayer",
+  "version": "0.1.0",
+  "description": "Flowplayer React Component",
+  "main": "index.js",
+  "repository": "git@github.com:flowplayer/react-flowplayer.git",
+  "author": "Flowplayer AB <info@flowplayer.com>",
+  "license": "MIT",
+  "private": false,
+  "peerDependencies": {
+    "react": "^17.0.1"
+  }
+}
