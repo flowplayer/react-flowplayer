@@ -1,0 +1,13 @@
+{
+    "include": [
+        "src/*"
+    ],
+    "compilerOptions": {
+        "target": "es2015",
+        "jsx": "react",
+        "allowSyntheticDefaultImports": true,
+        "strict": true,
+        "outDir": "./lib",
+        "moduleResolution": "node"
+    }
+}
