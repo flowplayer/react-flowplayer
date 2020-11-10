@@ -1,0 +1,26 @@
+version: 2.1
+jobs:
+  build-demo:
+    docker:
+      - image: circleci/node:erbium-stretch
+    steps:
+      - checkout
+      - restore_cache:
+          name: Restore Yarn Package Cache
+          keys:
+            - yarn-packages-{{ checksum "yarn.lock" }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --immutable
+      - save_cache:
+          name: Save Yarn Package Cache
+          key: yarn-packages-{{ checksum "yarn.lock" }}
+          paths:
+            - ~/.cache/yarn
+      - run:
+          name: Build demo
+          command: yarn demo
+workflows:
+  build-edge:
+    jobs:
+      - build-demo
