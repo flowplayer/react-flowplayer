@@ -11,7 +11,8 @@ type FlowplayerProps = { // TODO: take types from Flowplayer NPM package
 const Flowplayer = React.forwardRef<HTMLDivElement, FlowplayerProps>((opts, forwardedRef) => {
     // Init Flowplayer on mount
     useEffect(() => {
-        //if (!localRef.current) return
+        if (typeof forwardedRef === "function") return
+        if (!forwardedRef) return
         if (!forwardedRef.current) return
         flowplayer(forwardedRef.current, opts)
     }, [forwardedRef])

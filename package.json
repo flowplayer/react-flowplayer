@@ -9,7 +9,8 @@
   "private": false,
   "scripts": {
     "build": "tsc",
-    "dev": "webpack serve -c demo/webpack.config.js"
+    "dev": "webpack serve -c demo/webpack.config.js",
+    "demo": "webpack -c demo/webpack.config.js"
   },
   "peerDependencies": {
     "react": "^17.0.1"

@@ -18,9 +18,11 @@ const Main = () => {
 
     useEffect(() => {
         if (!playerApi) return
-        const stateHandler = (ev) => {
-            if (ev.type === flowplayer.events.PAUSE) setDemoPlaybackState("paused")
-            if (ev.type === flowplayer.events.PLAYING) setDemoPlaybackState("playing")
+        function stateHandler(ev: Event) {
+            if (ev.type === flowplayer.events.PAUSE)
+                setDemoPlaybackState("paused")
+            if (ev.type === flowplayer.events.PLAYING)
+                setDemoPlaybackState("playing")
         }
         playerApi.on([flowplayer.events.PAUSE, flowplayer.events.PLAYING], stateHandler)
         return () => {
