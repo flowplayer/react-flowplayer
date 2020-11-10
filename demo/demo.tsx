@@ -9,6 +9,7 @@ const flowplayer = window.flowplayer // TODO: fix
 const Main = () => {
     const playerRef = useRef(null)
 
+    // Get API handle in an asynchronous manner
     const playerApi = useFlowplayer(playerRef)
 
     const [demoPlaybackState, setDemoPlaybackState] = useState("paused")
@@ -18,6 +19,8 @@ const Main = () => {
         playerApi.togglePlay()
     }
 
+
+    // Listen to player events for the demo
     useEffect(() => {
         if (!playerApi) return
         function stateHandler(ev: Event) {
@@ -26,8 +29,10 @@ const Main = () => {
             if (ev.type === flowplayer.events.PLAYING)
                 setDemoPlaybackState("playing")
         }
+
         playerApi.on([flowplayer.events.PAUSE, flowplayer.events.PLAYING], stateHandler)
-        return () => {
+
+        return () => { // Cleanup on unmount
             playerApi.off(flowplayer.events.PAUSE, stateHandler)
             playerApi.off(flowplayer.events.PLAYING, stateHandler)
         }
