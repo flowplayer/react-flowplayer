@@ -27,5 +27,5 @@ workflows:
   build-edge:
     jobs:
       - build-demo:
-        context:
-          - aws-eu-west-1-player
+          context:
+            - aws-eu-west-1-player
