@@ -2,6 +2,8 @@ import ReactDom from "react-dom"
 import React, { useEffect, useMemo, useRef, useState } from "react"
 import Flowplayer, { useFlowplayer } from "../src"
 
+const DEMO_TOKEN = "eyJraWQiOiJiRmFRNEdUam9lNVEiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJjIjoie1wiYWNsXCI6NixcImlkXCI6XCJiRmFRNEdUam9lNVFcIixcImRvbWFpblwiOltcImJ1aWxkcy5mbG93cGxheWVyLmNvbVwiXX0iLCJpc3MiOiJGbG93cGxheWVyIn0.upfvSSPnB-v2ADHfbWG8ye9jDQhgwnMhZWQUqDS2DOLQbldCt9N8Atbq-gRm4GbqRRS7zoBFvvf6CgYWaV93nw"
+
 const flowplayer = window.flowplayer // TODO: fix
   
 const Main = () => {
@@ -37,7 +39,7 @@ const Main = () => {
             <h1>Flowplayer React Demo</h1>
             <div className="row">
                 <div className="column">
-                    <Flowplayer ref={playerRef} src="//edge.flowplayer.org/bauhaus.mp4" />
+                    <Flowplayer ref={playerRef} src="//edge.flowplayer.org/bauhaus.mp4" token={DEMO_TOKEN} />
                 </div>
             </div>
             <div className="row">

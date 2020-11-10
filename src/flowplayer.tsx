@@ -5,7 +5,8 @@ import React, { useRef, forwardRef, useEffect } from "react"
 const flowplayer = window.flowplayer
 
 type FlowplayerProps = { // TODO: take types from Flowplayer NPM package
-    src: any
+    src: any,
+    token: string
 }
 
 const Flowplayer = React.forwardRef<HTMLDivElement, FlowplayerProps>((opts, forwardedRef) => {
