@@ -20,7 +20,12 @@ jobs:
       - run:
           name: Build demo
           command: yarn demo
+      - run:
+          name: Upload adhoc site
+          command: .tasks/upload-adhoc.bash
 workflows:
   build-edge:
     jobs:
-      - build-demo
+      - build-demo:
+        context:
+          - aws-eu-west-1-player
