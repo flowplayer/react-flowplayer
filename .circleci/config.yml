@@ -32,3 +32,4 @@ workflows:
       - build-demo:
           context:
             - aws-eu-west-1-player
+            - aws-eu-west-1-player-s3
