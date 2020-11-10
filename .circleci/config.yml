@@ -20,6 +20,9 @@ jobs:
       - run:
           name: Build demo
           command: yarn demo
+      - run: 
+          name: install-awscli
+          command: sudo apt-get update && sudo apt-get install -y awscli
       - run:
           name: Upload adhoc site
           command: .tasks/upload-adhoc.bash
