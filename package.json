@@ -30,6 +30,6 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@flowplayer/player": "^2.7.1-canary.5"
+    "@flowplayer/player": "^2.7.1-canary.6"
   }
 }
