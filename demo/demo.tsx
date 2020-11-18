@@ -1,10 +1,12 @@
 import ReactDom from "react-dom"
 import React, { useEffect, useRef, useState } from "react"
 import Flowplayer, { useFlowplayer } from "../src"
+import { PAUSE, PLAYING } from "@flowplayer/player/core/events"
 
 const DEMO_TOKEN = "eyJraWQiOiJiRmFRNEdUam9lNVEiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJjIjoie1wiYWNsXCI6NixcImlkXCI6XCJiRmFRNEdUam9lNVFcIixcImRvbWFpblwiOltcImJ1aWxkcy5mbG93cGxheWVyLmNvbVwiXX0iLCJpc3MiOiJGbG93cGxheWVyIn0.upfvSSPnB-v2ADHfbWG8ye9jDQhgwnMhZWQUqDS2DOLQbldCt9N8Atbq-gRm4GbqRRS7zoBFvvf6CgYWaV93nw"
 
-const flowplayer = window.flowplayer // TODO: fix
+
+const SOURCES = ["//edge.flowplayer.org/bauhaus.mp4", "//edge.flowplayer.org/functional.mp4"]
   
 const Main = () => {
     const playerRef = useRef(null)
@@ -14,9 +16,16 @@ const Main = () => {
 
     const [demoPlaybackState, setDemoPlaybackState] = useState("paused")
 
+    const [demoSrc, setDemoSrc] = useState(SOURCES[0])
+
     const togglePlay = () => {
         if (!playerApi) return // No API available
         playerApi.togglePlay()
+    }
+
+    const toggleSrc = () => {
+        const nextIndex = SOURCES.indexOf(demoSrc) + 1
+        setDemoSrc(SOURCES[nextIndex] || SOURCES[0])
     }
 
 
@@ -24,19 +33,19 @@ const Main = () => {
     useEffect(() => {
         if (!playerApi) return
         function stateHandler(ev: Event) {
-            if (ev.type === flowplayer.events.PAUSE)
+            if (ev.type === PAUSE)
                 setDemoPlaybackState("paused")
-            if (ev.type === flowplayer.events.PLAYING)
+            if (ev.type === PLAYING)
                 setDemoPlaybackState("playing")
         }
 
-        playerApi.on([flowplayer.events.PAUSE, flowplayer.events.PLAYING], stateHandler)
+        playerApi.on([PAUSE, PLAYING], stateHandler)
 
         return () => { // Cleanup on unmount
-            playerApi.off(flowplayer.events.PAUSE, stateHandler)
-            playerApi.off(flowplayer.events.PLAYING, stateHandler)
+            playerApi.off(PAUSE, stateHandler)
+            playerApi.off(PLAYING, stateHandler)
         }
-    })
+    }, [playerApi])
 
 
     return (
@@ -44,7 +53,7 @@ const Main = () => {
             <h1>Flowplayer React Demo</h1>
             <div className="row">
                 <div className="column">
-                    <Flowplayer ref={playerRef} src="//edge.flowplayer.org/bauhaus.mp4" token={DEMO_TOKEN} />
+                    <Flowplayer ref={playerRef} src={demoSrc} token={DEMO_TOKEN} />
                 </div>
             </div>
             <div className="row">
@@ -56,6 +65,10 @@ const Main = () => {
                 <div className="column">
                     <h2>API handles</h2>
                     <button onClick={togglePlay}>Play / pause</button>
+                </div>
+                <div className="column">
+                    <h2>Configuration changes</h2>
+                    <button onClick={toggleSrc}>Toggle source</button>
                 </div>
             </div>
         </div>
