@@ -1,11 +1,5 @@
 import React, { useEffect, useRef } from "react"
 import flowplayer, { Flowplayer } from "@flowplayer/player"
-import { useFlowplayer } from "./hooks"
-
-type FlowplayerProps = { // TODO: take types from Flowplayer NPM package
-    src: any,
-    token: string
-}
 
 const Flowplayer = React.forwardRef<HTMLDivElement, Flowplayer.Config>((opts, forwardedRef) => {
     const ref = forwardedRef === null ? useRef(null) : forwardedRef
