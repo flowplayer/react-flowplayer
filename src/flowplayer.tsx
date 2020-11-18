@@ -16,7 +16,8 @@ const Flowplayer = React.forwardRef<HTMLDivElement, Flowplayer.Config>((opts, fo
         if (typeof ref === "function") return
         if (!ref) return
         if (!ref.current) return
-        const api = flowplayer(ref.current, opts)
+        console.log(ref.current, opts)
+        const api = flowplayer(ref.current, {...opts})
         return () => {
             api.destroy()
         }

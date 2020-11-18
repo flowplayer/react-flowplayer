@@ -1,9 +1,5 @@
 import { RefObject, useCallback, useEffect, useMemo, useState } from "react";
-
-// TODO: fix this when flowplayer is in NPM
-// import flowplayer from "@flowplayer/player"
-const flowplayer = window.flowplayer
-
+import flowplayer from "@flowplayer/player"
 /**
  * Hook to use Flowplayer API in an async way - tries to solve the chicken/egg problem
  */
