@@ -10,9 +10,10 @@ const Flowplayer = React.forwardRef<HTMLDivElement, Flowplayer.Config>((opts, fo
         if (typeof ref === "function") return
         if (!ref) return
         if (!ref.current) return
-        const api = flowplayer(ref.current, opts)
+        const api = flowplayer(ref.current, {...opts})
         return () => {
             api.destroy()
+            if (ref.current) ref.current.innerHTML = ""
         }
     }, [ref])
 
@@ -22,7 +23,7 @@ const Flowplayer = React.forwardRef<HTMLDivElement, Flowplayer.Config>((opts, fo
         const api = useApi()
         if (!api) return
         api.setOpts(rest)
-    }, [rest])
+    }, [opts])
 
     useEffect(() => {
         const api = useApi()
