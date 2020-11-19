@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@flowplayer/player@^2.7.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@flowplayer/player/-/player-2.7.0.tgz#7a7ad1c39e56d335ab61292f81320066e058f1e1"
-  integrity sha512-nOqYiDdIR3DMaihPAiB9rqWznQrLh5I6LCm6lmlX4/0G9ZDYu/zo2nqlj22Kzvj9RgOT1J+6doag3Jd+KJTdOA==
+"@flowplayer/player@^2.7.1-canary.7":
+  version "2.7.1-canary.7"
+  resolved "https://registry.yarnpkg.com/@flowplayer/player/-/player-2.7.1-canary.7.tgz#d2db3dab4000946ac9d9d5ec12f99abd9f95a8ac"
+  integrity sha512-OqQMIXgZ1AgNPV1q9qpfaj82TvaGf3RScXcPAbeyw2LLY3MMhpuwgD+Se3r/iLibfCVNjk0yUog6JcNAspF52g==
 
 "@types/eslint-scope@^3.7.0":
   version "3.7.0"
