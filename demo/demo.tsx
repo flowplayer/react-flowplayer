@@ -3,6 +3,8 @@ import React, { useEffect, useRef, useState } from "react"
 import Flowplayer, { useFlowplayer } from "../src"
 import { PAUSE, PLAYING } from "@flowplayer/player/core/events"
 
+import "@flowplayer/player/flowplayer.css"
+
 const DEMO_TOKEN = "eyJraWQiOiJiRmFRNEdUam9lNVEiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJjIjoie1wiYWNsXCI6NixcImlkXCI6XCJiRmFRNEdUam9lNVFcIixcImRvbWFpblwiOltcImJ1aWxkcy5mbG93cGxheWVyLmNvbVwiXX0iLCJpc3MiOiJGbG93cGxheWVyIn0.upfvSSPnB-v2ADHfbWG8ye9jDQhgwnMhZWQUqDS2DOLQbldCt9N8Atbq-gRm4GbqRRS7zoBFvvf6CgYWaV93nw"
 
 
@@ -42,6 +44,7 @@ const Main = () => {
         playerApi.on([PAUSE, PLAYING], stateHandler)
 
         return () => { // Cleanup on unmount
+            if (!playerApi) return
             playerApi.off(PAUSE, stateHandler)
             playerApi.off(PLAYING, stateHandler)
         }
