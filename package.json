@@ -2,7 +2,7 @@
   "name": "@flowplayer/react-flowplayer",
   "version": "0.1.0",
   "description": "Flowplayer React Component",
-  "main": "index.js",
+  "main": "lib/index.js",
   "repository": "git@github.com:flowplayer/react-flowplayer.git",
   "author": "Flowplayer AB <info@flowplayer.com>",
   "license": "MIT",
@@ -29,5 +29,8 @@
     "webpack-cli": "^4.2.0",
     "webpack-dev-server": "^3.11.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "files": [
+    "lib/*.js"
+  ]
 }
