@@ -1,6 +1,6 @@
 import ReactDom from "react-dom"
 import React, { useEffect, useRef, useState } from "react"
-import Flowplayer, { useFlowplayer } from "../src"
+import { useFlowplayer } from "../src"
 import { PAUSE, PLAYING } from "@flowplayer/player/core/events"
 
 import "@flowplayer/player/flowplayer.css"
@@ -11,10 +11,9 @@ const DEMO_TOKEN = "eyJraWQiOiJiRmFRNEdUam9lNVEiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1
 const SOURCES = ["//edge.flowplayer.org/bauhaus.mp4", "//edge.flowplayer.org/functional.mp4"]
   
 const Main = () => {
-    const playerRef = useRef(null)
 
     // Get API handle in an asynchronous manner
-    const playerApi = useFlowplayer(playerRef)
+    const { api: playerApi, Flowplayer } = useFlowplayer({ token: DEMO_TOKEN })
 
     const [demoPlaybackState, setDemoPlaybackState] = useState("paused")
 
@@ -50,13 +49,15 @@ const Main = () => {
         }
     }, [playerApi])
 
+    //if (!Flowplayer) return null
+
 
     return (
         <div className="container">
             <h1>Flowplayer React Demo</h1>
             <div className="row">
                 <div className="column">
-                    <Flowplayer ref={playerRef} src={demoSrc} token={DEMO_TOKEN} />
+                    <Flowplayer src={demoSrc} token={DEMO_TOKEN} />
                 </div>
             </div>
             <div className="row">
