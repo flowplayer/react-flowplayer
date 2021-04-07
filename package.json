@@ -10,7 +10,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "webpack serve -c demo/webpack.config.js",
-    "demo": "webpack -c demo/webpack.config.js"
+    "demo": "webpack -c demo/webpack.config.js",
+    "prepublish": "npm run build"
   },
   "peerDependencies": {
     "@flowplayer/player": "^2.7.1",
