@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import flowplayer, { Config } from "@flowplayer/player"
 import FlowplayerComponent from "./flowplayer";
+import { Plugin } from "@flowplayer/player/plugin";
 
 /**
  * Hook to use Flowplayer API in an async way - tries to solve the chicken/egg problem
@@ -10,6 +11,13 @@ export const useFlowplayer = ({ token } : { token: string }) => {
     
     // Store flowplayer instances to a state value in order to force re-renders when new instances are available
     const [flowplayerInstances, setFlowplayerInstances] = useState(flowplayer.instances.slice())
+
+
+    const ReactFlowplayerDetectExtension = useMemo(() => class implements Plugin {
+        init() {
+            setFlowplayerInstances(flowplayer.instances.slice())
+        }
+    }, [])
     
     // Detect new flowplayer instances to keep up to date
     useEffect(() => {
@@ -18,13 +26,9 @@ export const useFlowplayer = ({ token } : { token: string }) => {
             setFlowplayerInstances(flowplayer.instances.slice())
             return () => {}
         }
-        // API not created - wait for creation
-        const reactDetectExtension = () => {
-            setFlowplayerInstances(flowplayer.instances.slice()) // Create a copy to not use the same reference
-        }
-        flowplayer(reactDetectExtension)
+        flowplayer(ReactFlowplayerDetectExtension)
         return () => {
-            (flowplayer.extensions as any[]).filter(ext => ext !== reactDetectExtension)
+            (flowplayer.extensions as any[]).filter(ext => ext !== ReactFlowplayerDetectExtension)
         }
     }, [])
     

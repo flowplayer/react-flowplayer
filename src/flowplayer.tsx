@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react"
-import flowplayer, { Flowplayer } from "@flowplayer/player"
+import flowplayer, { Flowplayer as FlowplayerUMD } from "@flowplayer/player"
 
-const Flowplayer = React.forwardRef<HTMLDivElement, Flowplayer.Config>((opts, forwardedRef) => {
+const Flowplayer = React.forwardRef<HTMLDivElement, FlowplayerUMD.Config>((opts, forwardedRef) => {
     const ref = forwardedRef === null ? useRef(null) : forwardedRef
 
     const { token, src, ...rest } = opts
