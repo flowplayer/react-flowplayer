@@ -9,7 +9,7 @@ const DEMO_TOKEN = "eyJraWQiOiJiRmFRNEdUam9lNVEiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1
 
 
 const SOURCES = ["//edge.flowplayer.org/bauhaus.mp4", "//edge.flowplayer.org/functional.mp4"]
-  
+
 const Main = () => {
 
     // Get API handle in an asynchronous manner
@@ -49,34 +49,38 @@ const Main = () => {
         }
     }, [playerApi])
 
-    //if (!Flowplayer) return null
-
-
     return (
-        <div className="container">
-            <h1>Flowplayer React Demo</h1>
-            <div className="row">
-                <div className="column">
-                    <Flowplayer src={demoSrc} token={DEMO_TOKEN} />
-                </div>
-            </div>
-            <div className="row">
-                <div className="column">
-                    Playback state is: { demoPlaybackState }
-                </div>
-            </div>
-            <div className="row">
-                <div className="column">
-                    <h2>API handles</h2>
-                    <button onClick={togglePlay}>Play / pause</button>
-                </div>
-                <div className="column">
-                    <h2>Configuration changes</h2>
-                    <button onClick={toggleSrc}>Toggle source</button>
-                </div>
-            </div>
+      <div className="container">
+        <h1>Flowplayer React Demo</h1>
+        <div className="row">
+          <div className="column">
+            <Flowplayer
+              src={demoSrc}
+              token={DEMO_TOKEN}
+              uiConfig={{
+                usePlay2: false,
+                noFullscreen: false,
+                usePlay3: true,
+                noMute: true
+              }}
+            />
+          </div>
         </div>
-    )
+        <div className="row">
+          <div className="column">Playback state is: {demoPlaybackState}</div>
+        </div>
+        <div className="row">
+          <div className="column">
+            <h2>API handles</h2>
+            <button onClick={togglePlay}>Play / pause</button>
+          </div>
+          <div className="column">
+            <h2>Configuration changes</h2>
+            <button onClick={toggleSrc}>Toggle source</button>
+          </div>
+        </div>
+      </div>
+    );
 }
 
 const container = document.querySelector("#main")
