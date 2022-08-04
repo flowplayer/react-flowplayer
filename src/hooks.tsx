@@ -1,5 +1,5 @@
-import { RefObject, useEffect, useMemo, useState } from "react";
 import flowplayer from "@flowplayer/player";
+import { RefObject, useEffect, useMemo, useState } from "react";
 import { Plugin } from "@flowplayer/player/plugin";
 
 /**

@@ -31,7 +31,7 @@ const Flowplayer = React.forwardRef<HTMLDivElement, FlowplayerUMD.Config>((opts,
         if (!api || !src) return
         api.setSrc(src)
     }, [src])
-    
+
     return <div ref={ref} />
 })
 
