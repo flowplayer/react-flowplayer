@@ -1,5 +1,5 @@
-import flowplayer from "@flowplayer/player";
 import { RefObject, useEffect, useMemo, useState } from "react";
+import flowplayer from "@flowplayer/player";
 import { Plugin } from "@flowplayer/player/plugin";
 
 /**
@@ -23,8 +23,8 @@ export const useFlowplayer = (ref: RefObject<HTMLDivElement>) => {
   useEffect(() => {
     // If API is already created we don't need the extension
     if (
-      ref.current &&
-      (flowplayer.instances as any[]).some((instance) => instance.root == ref.current)
+      ref?.current &&
+      (flowplayer.instances as any[]).some((instance) => instance.root == ref?.current)
     ) {
       setFlowplayerInstances(flowplayer.instances.slice());
       return () => {};
@@ -36,6 +36,6 @@ export const useFlowplayer = (ref: RefObject<HTMLDivElement>) => {
   }, []);
 
   return useMemo(() => {
-    return ref.current ? flowplayer(ref.current) : null;
+    return ref?.current ? flowplayer(ref.current) : null;
   }, [flowplayerInstances]);
 };
