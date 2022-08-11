@@ -1,38 +1,42 @@
-import React, { useEffect, useRef } from "react"
-import flowplayer, { Flowplayer as FlowplayerUMD } from "@flowplayer/player"
+import type { ForwardedRef } from "react";
+import type { Config } from "@flowplayer/player";
 
-const Flowplayer = React.forwardRef<HTMLDivElement, FlowplayerUMD.Config>((opts, forwardedRef) => {
-    const ref = forwardedRef === null ? useRef(null) : forwardedRef
+import React, { useEffect, forwardRef, useRef, useImperativeHandle } from "react";
+import flowplayer from "@flowplayer/player";
 
-    const { token, src, ...rest } = opts
-    // Init Flowplayer on mount
-    useEffect(() => {
-        if (typeof ref === "function") return
-        if (!ref) return
-        if (!ref.current) return
-        if (!token) return
-        const api = flowplayer(ref.current, {token,...opts})
-        return () => {
-            api.destroy()
-            if (ref.current) ref.current.innerHTML = ""
-        }
-    }, [token, ref])
+const Flowplayer = (props: Config, receivedRef: ForwardedRef<HTMLDivElement>) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const { token, src, ...rest } = props;
+  const playerApi = () => (ref?.current ? flowplayer(ref.current) : null);
 
-    const useApi = () => ref && typeof ref !== "function" &&  ref.current ? flowplayer(ref.current) : null
+  useImperativeHandle(receivedRef, () => ref?.current as any);
 
-    useEffect(() => {
-        const api = useApi()
-        if (!api) return
-        api.setOpts(rest)
-    }, [opts])
+  // Init Flowplayer on mount
+  useEffect(() => {
+    if (typeof ref === "function") return;
+    if (!ref) return;
+    if (!ref.current) return;
+    if (!token) return;
+    const api = flowplayer(ref?.current, { token, ...props });
+    return () => {
+      api.destroy();
+      if (ref?.current) ref.current.innerHTML = "";
+    };
+  }, [token, ref]);
 
-    useEffect(() => {
-        const api = useApi()
-        if (!api || !src) return
-        api.setSrc(src)
-    }, [src])
-    
-    return <div ref={ref} />
-})
+  useEffect(() => {
+    const api = playerApi();
+    api?.setOpts(rest);
+  }, [props]);
 
-export default Flowplayer
+  useEffect(() => {
+    if (!src) return;
+    const api = playerApi();
+    api?.setSrc(src);
+  }, [src]);
+
+  return <div ref={ref} />;
+};
+
+Flowplayer.displayName = "Flowplayer";
+export default forwardRef<HTMLDivElement, Config>(Flowplayer);
