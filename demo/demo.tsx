@@ -2,48 +2,17 @@ import "@flowplayer/player/flowplayer.css";
 
 import ReactDom from "react-dom";
 import React, { useEffect, useRef, useState } from "react";
-import Flowplayer, { useFlowplayer } from "../src";
-import { PAUSE, PLAYING } from "@flowplayer/player/core/events";
 import flowplayer from "@flowplayer/player";
-import Preview from "@flowplayer/player/plugins/preview";
+import Flowplayer, { useFlowplayer } from "../src";
+import PreviewPlugin from "@flowplayer/player/plugins/preview";
 
-const ANIMATED_PREVIEW = [
-  {
-    src: "http://l3video.lwcdn.com/preview/0edd6c9a-62f6-44a1-9382-36845a0003f4/ap-277c1297-4a63-4e8c-9b90-0d01e69042b5_360.webp",
-    type: "image/webp",
-    dimensions: {
-      width: 640,
-      height: 360,
-    },
-  },
-  {
-    src: "http://l3video.lwcdn.com/preview/0edd6c9a-62f6-44a1-9382-36845a0003f4/ap-277c1297-4a63-4e8c-9b90-0d01e69042b5_270.webp",
-    type: "image/webp",
-    dimensions: {
-      width: 480,
-      height: 270,
-    },
-  },
-  {
-    src: "http://l3video.lwcdn.com/preview/0edd6c9a-62f6-44a1-9382-36845a0003f4/ap-277c1297-4a63-4e8c-9b90-0d01e69042b5_720.webp",
-    type: "image/webp",
-    dimensions: {
-      width: 1280,
-      height: 720,
-    },
-  },
-];
+import { PAUSE, PLAYING } from "@flowplayer/player/core/events";
+import { SOURCES, DEMO_TOKEN, ANIMATED_PREVIEW } from "./config";
 
-const DEMO_TOKEN =
-  "eyJraWQiOiJiRmFRNEdUam9lNVEiLCJ0eXAiOiJKV1QiLCJhbGciOiJFUzI1NiJ9.eyJjIjoie1wiYWNsXCI6NixcImlkXCI6XCJiRmFRNEdUam9lNVFcIixcImRvbWFpblwiOltcImJ1aWxkcy5mbG93cGxheWVyLmNvbVwiXX0iLCJpc3MiOiJGbG93cGxheWVyIn0.upfvSSPnB-v2ADHfbWG8ye9jDQhgwnMhZWQUqDS2DOLQbldCt9N8Atbq-gRm4GbqRRS7zoBFvvf6CgYWaV93nw";
+// - Load plugins
+flowplayer(PreviewPlugin);
 
-const SOURCES = [
-  "//edge.flowplayer.org/bauhaus.mp4",
-  "//edge.flowplayer.org/functional.mp4"
-];
-
-flowplayer(Preview);
-
+// - Component
 const Main = () => {
   // Get API handle in an asynchronous manner
   const playerRef = useRef<HTMLDivElement | null>(null);
@@ -71,9 +40,6 @@ const Main = () => {
   useEffect(() => {
     if (!playerApi) return;
     playerApi.on([PAUSE, PLAYING], stateHandler);
-    playerApi.setOpts(
-      {preview: { src: ANIMATED_PREVIEW }} as any
-    )
 
     return () => {
       // Cleanup on unmount
@@ -92,6 +58,11 @@ const Main = () => {
             src={demoSrc}
             token={DEMO_TOKEN}
             ref={playerRef}
+            opts={{
+              title: "Example title",
+              description: "Example description",
+              preview: { src: "http://l3video.lwcdn.com/preview/0edd6c9a-62f6-44a1-9382-36845a0003f4/ap-277c1297-4a63-4e8c-9b90-0d01e69042b5_360.webp", type: "webp/img" }
+            }}
           />
         </div>
       </div>

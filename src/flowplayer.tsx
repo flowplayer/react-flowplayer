@@ -1,12 +1,20 @@
 import type { ForwardedRef } from "react";
-import type { Config } from "@flowplayer/player";
+import type { Config, ConfigWith } from "@flowplayer/player";
 
 import React, { useEffect, forwardRef, useRef, useImperativeHandle } from "react";
 import flowplayer from "@flowplayer/player";
 
-const Flowplayer = (props: Config, receivedRef: ForwardedRef<HTMLDivElement>) => {
+// - Types
+type Props = {
+  token: Config["token"],
+  src: Config["src"],
+  opts?: Omit<ConfigWith<any>, "token" | "src">
+}
+
+// - Components
+const Flowplayer = (props: Props, receivedRef: ForwardedRef<HTMLDivElement>) => {
+  const { token, src, opts } = props;
   const ref = useRef<HTMLDivElement | null>(null);
-  const { token, src, ...rest } = props;
   const playerApi = () => (ref?.current ? flowplayer(ref.current) : null);
 
   useImperativeHandle(receivedRef, () => ref?.current as any);
@@ -17,7 +25,7 @@ const Flowplayer = (props: Config, receivedRef: ForwardedRef<HTMLDivElement>) =>
     if (!ref) return;
     if (!ref.current) return;
     if (!token) return;
-    const api = flowplayer(ref?.current, { token, ...props });
+    const api = flowplayer(ref?.current, { token, ...opts });
     return () => {
       api.destroy();
       if (ref?.current) ref.current.innerHTML = "";
@@ -25,9 +33,10 @@ const Flowplayer = (props: Config, receivedRef: ForwardedRef<HTMLDivElement>) =>
   }, [token, ref]);
 
   useEffect(() => {
+    if (!opts) return;
     const api = playerApi();
-    api?.setOpts(rest);
-  }, [props]);
+    api?.setOpts(opts);
+  }, [opts]);
 
   useEffect(() => {
     if (!src) return;
@@ -38,5 +47,7 @@ const Flowplayer = (props: Config, receivedRef: ForwardedRef<HTMLDivElement>) =>
   return <div ref={ref} />;
 };
 
+// - Exports
 Flowplayer.displayName = "Flowplayer";
-export default forwardRef<HTMLDivElement, Config>(Flowplayer);
+export type FlowplayerProps = Props;
+export default forwardRef<HTMLDivElement, Props>(Flowplayer);
