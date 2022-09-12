@@ -61,7 +61,8 @@ const Main = () => {
             opts={{
               title: "Example title",
               description: "Example description",
-              preview: { src: "http://l3video.lwcdn.com/preview/0edd6c9a-62f6-44a1-9382-36845a0003f4/ap-277c1297-4a63-4e8c-9b90-0d01e69042b5_360.webp", type: "webp/img" }
+              poster: { },
+              preview: { src: ANIMATED_PREVIEW }
             }}
           />
         </div>
