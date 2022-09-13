@@ -1,6 +1,7 @@
 {
     "include": [
-        "src/*"
+        "src/*",
+        "demo/index.d.ts"
     ],
     "compilerOptions": {
         "target": "es2015",

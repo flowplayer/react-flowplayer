@@ -1,0 +1,1 @@
+declare module '@flowplayer/player/plugins/preview';
