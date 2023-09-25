@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "build": "tsc",
+    "build": "tsc -d",
     "dev": "webpack serve -c demo/webpack.config.js",
     "demo": "webpack -c demo/webpack.config.js",
     "prepublish": "yarn build"
