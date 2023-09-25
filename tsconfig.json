@@ -9,6 +9,7 @@
         "allowSyntheticDefaultImports": true,
         "strict": true,
         "outDir": "./lib",
-        "moduleResolution": "node"
+        "moduleResolution": "node",
+        "module": "UMD"
     }
 }

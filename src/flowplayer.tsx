@@ -1,8 +1,8 @@
 import type { ForwardedRef } from "react";
-import type { Config, ConfigWith } from "@flowplayer/player";
+import { type Config, type ConfigWith, type FlowplayerUMD } from "@flowplayer/player";
 
-import React, { useEffect, forwardRef, useRef, useImperativeHandle } from "react";
-import flowplayer from "@flowplayer/player";
+import { useEffect, forwardRef, useRef, useImperativeHandle, useMemo, useState } from "react";
+import * as React from "react"
 
 // - Types
 type Props = {
@@ -15,7 +15,17 @@ type Props = {
 const Flowplayer = (props: Props, receivedRef: ForwardedRef<HTMLDivElement>) => {
   const { token, src, opts } = props;
   const ref = useRef<HTMLDivElement | null>(null);
-  const playerApi = () => (ref?.current ? flowplayer(ref.current) : null);
+  const [flowplayer, setFlowplayer] = useState<FlowplayerUMD | null>(null)
+  const playerApi = useMemo(() => () => ((ref?.current && flowplayer) ? flowplayer(ref.current) : null), [flowplayer]);
+  console.log("here")
+  useEffect(() => {
+    if (!canUseDOM()) return
+    import("@flowplayer/player").then(umd => {
+      setFlowplayer(umd.flowplayer)
+    }).catch(() => {
+      console.warn("Unable to dynamically import flowplayer")
+    })
+  }, [])
 
   useImperativeHandle(receivedRef, () => ref?.current as any);
 
@@ -25,12 +35,13 @@ const Flowplayer = (props: Props, receivedRef: ForwardedRef<HTMLDivElement>) => 
     if (!ref) return;
     if (!ref.current) return;
     if (!token) return;
+    if (!flowplayer) return;
     const api = flowplayer(ref?.current, { token, ...opts });
     return () => {
       api.destroy();
       if (ref?.current) ref.current.innerHTML = "";
     };
-  }, [token, ref]);
+  }, [token, ref, flowplayer]);
 
   useEffect(() => {
     if (!opts) return;
@@ -51,3 +62,14 @@ const Flowplayer = (props: Props, receivedRef: ForwardedRef<HTMLDivElement>) => 
 Flowplayer.displayName = "Flowplayer";
 export type FlowplayerProps = Props;
 export default forwardRef<HTMLDivElement, Props>(Flowplayer);
+
+
+function canUseDOM() {
+  try {
+    // eslint-disable-next-line
+    const temp = navigator.userAgent
+    return true 
+  } catch (e) {
+    return false
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "include": [
+      "./client.tsx",
+  ],
+  "compilerOptions": {
+      "target": "es2015",
+      "jsx": "react",
+      "allowSyntheticDefaultImports": true,
+      "strict": true,
+      "outDir": "./dist",
+      "moduleResolution": "node",
+      "module": "umd"
+  }
+}
