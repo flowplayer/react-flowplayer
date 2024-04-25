@@ -14,11 +14,11 @@
     "prepublish": "yarn build"
   },
   "peerDependencies": {
-    "@flowplayer/player": "^3.2.4",
+    "@flowplayer/player": "3.10.4-rc.1",
     "react": ">= 17.0.2"
   },
   "devDependencies": {
-    "@flowplayer/player": "^3.2.4",
+    "@flowplayer/player": "3.10.4-rc.1",
     "@types/react": "^16.9.55",
     "@types/react-dom": "^16.9.9",
     "css-loader": "^5.0.1",
@@ -31,7 +31,6 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "4.9.2"
   },
-  "dependencies": {},
   "files": [
     "lib/*.js",
     "lib/*.d.ts"
