@@ -1,7 +1,7 @@
 import { RefObject, useEffect, useMemo, useState } from "react";
 import flowplayer from "@flowplayer/player";
-import { Plugin } from "@flowplayer/player/plugin";
 
+type Plugin = {}
 /**
  * Hook to use Flowplayer API in an async way - tries to solve the chicken/egg problem
  */
