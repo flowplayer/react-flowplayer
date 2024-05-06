@@ -3,6 +3,9 @@
         "src/*",
         "demo/index.d.ts"
     ],
+    "exclude": [
+        "test/**/*.test-d.tsx" // we have a separate task where types are tested
+    ],
     "compilerOptions": {
         "target": "es2015",
         "jsx": "react",
