@@ -7,12 +7,12 @@
   resolved "https://registry.npmjs.org/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz"
   integrity sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==
 
-"@flowplayer/player@3.10.4-rc.2":
-  version "3.10.4-rc.2"
-  resolved "https://registry.yarnpkg.com/@flowplayer/player/-/player-3.10.4-rc.2.tgz#5b1fa52eec4a7be0c23ac33eddf29c30a0e992d1"
-  integrity sha512-JXvZkeB8FZ34Twb7uR59iuR2V/DHUbuEihEQhhGEAXJUf8zI1Usqs47KX03wMx64VIjjyAyC0Fye0Dj8MVFgzw==
+"@flowplayer/player@^3.10.4-rc.4":
+  version "3.10.4-rc.4"
+  resolved "https://registry.yarnpkg.com/@flowplayer/player/-/player-3.10.4-rc.4.tgz#1c5139192d012d1f8de8dbc1aeff6dbd974f2400"
+  integrity sha512-f4L6q238rsnnCfoOv4CWvyWRK26h+lmFrer6404Jt7mdCgijHTnYZZzx45QTOUUuVuroDyOXnIQNrv8xMb+oGQ==
   dependencies:
-    hls.js "1.4.0"
+    hls.js "1.5.8"
 
 "@jridgewell/gen-mapping@^0.3.0":
   version "0.3.2"
@@ -1069,10 +1069,10 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-hls.js@1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/hls.js/-/hls.js-1.4.0.tgz#e73af3e7c8d4310a2bcc92d5ade362dfb781fef7"
-  integrity sha512-VEjg7Rx5FlE9TB3MIn0HPgq3J+vR7EoQnjaqMCk/ISEaCOSZlAFh4g867f1QkSxZiq9kHeUZo+iH16X7VS3jKA==
+hls.js@1.5.8:
+  version "1.5.8"
+  resolved "https://registry.yarnpkg.com/hls.js/-/hls.js-1.5.8.tgz#73c3d2984a56f103e6900bf7a5e65b288dba846e"
+  integrity sha512-hJYMPfLhWO7/7+n4f9pn6bOheCGx0WgvVz7k3ouq3Pp1bja48NN+HeCQu3XCGYzqWQF/wo7Sk6dJAyWVJD8ECA==
 
 hpack.js@^2.1.6:
   version "2.1.6"
