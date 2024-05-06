@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build-demo:
     docker:
-      - image: circleci/node:erbium-stretch
+      - image: circleci/node:20.12
     steps:
       - checkout
       - restore_cache:
