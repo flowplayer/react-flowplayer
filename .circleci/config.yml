@@ -3,25 +3,11 @@ orbs:
   node: circleci/node@5.2.0
 jobs:
   build-demo:
-    docker:
-      - image: cimg/base:stable
+    executor: node/default # use the default executor defined within the orb
     steps:
       - checkout
-      - restore_cache:
-          name: Restore Yarn Package Cache
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install Dependencies
-          command: yarn install --immutable
-      - run:
-          name: Use latest Flowplayer canary
-          command: yarn upgrade @flowplayer/player@next
-      - save_cache:
-          name: Save Yarn Package Cache
-          key: yarn-packages-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
+      - node/install-packages:
+          pkg-manager: yarn
       - run:
           name: Build demo
           command: yarn demo
