@@ -4,11 +4,14 @@ import type { Config, ConfigWith } from "@flowplayer/player";
 import React, { useEffect, forwardRef, useRef, useImperativeHandle } from "react";
 import flowplayer from "@flowplayer/player";
 
+type KeyValue = Record<string, any>;
+
 // - Types
 type Props = {
   token: Config["token"],
   src: Config["src"],
-  opts?: Omit<ConfigWith<any>, "token" | "src">
+  // allow custom plugin config
+  opts?: Omit<Config, "token" | "src"> & KeyValue
 }
 
 // - Components
