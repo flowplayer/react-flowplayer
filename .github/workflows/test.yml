@@ -1,0 +1,31 @@
+name: test
+# Triggers the workflow on push or pull request events
+on: [pull_request]
+
+jobs:
+  danger-bot:
+    runs-on: ubuntu-latest
+    name: run typespec
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Find yarn cache
+        id: yarn-cache-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Restore cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.yarn-cache-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      - name: Authenticate with private NPM package
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.PLAYBACK_NPM_PUBLISHING_TOKEN }}" > ~/.npmrc
+      - name: yarn install
+        run: yarn install --immutable
+      - name: build
+        run:  yarn build
+      - name: test typespec
+        run: yarn test:dts

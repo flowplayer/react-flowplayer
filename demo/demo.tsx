@@ -61,7 +61,7 @@ const Main = () => {
             opts={{
               title: "Example title",
               description: "Example description",
-              poster: { },
+              poster: "https://picsum.photos/200/300",
               preview: { src: ANIMATED_PREVIEW }
             }}
           />
