@@ -16,11 +16,11 @@
     "prepublish": "yarn build"
   },
   "peerDependencies": {
-    "@flowplayer/player": "3.10.4-rc.4",
+    "@flowplayer/player": "^3.11.1",
     "react": ">= 17.0.2"
   },
   "devDependencies": {
-    "@flowplayer/player": "^3.10.4-rc.4",
+    "@flowplayer/player": "^3.11.1",
     "@types/react": "^16.9.55",
     "@types/react-dom": "^16.9.9",
     "css-loader": "^5.0.1",

@@ -30,10 +30,10 @@
   resolved "https://registry.npmjs.org/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz"
   integrity sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==
 
-"@flowplayer/player@^3.10.4-rc.4":
-  version "3.10.4-rc.4"
-  resolved "https://registry.yarnpkg.com/@flowplayer/player/-/player-3.10.4-rc.4.tgz#1c5139192d012d1f8de8dbc1aeff6dbd974f2400"
-  integrity sha512-f4L6q238rsnnCfoOv4CWvyWRK26h+lmFrer6404Jt7mdCgijHTnYZZzx45QTOUUuVuroDyOXnIQNrv8xMb+oGQ==
+"@flowplayer/player@^3.11.1":
+  version "3.11.1"
+  resolved "https://registry.yarnpkg.com/@flowplayer/player/-/player-3.11.1.tgz#449786febc2f4a0d329645337635ea4364e9f073"
+  integrity sha512-7HQaueR/DSbkqM+H/ROpKaN6seuRUNaQkH8fpzGXPwwnXxltc9QMpWYS3zVThedsRiXg7+YQe10vRYSS9AAOUA==
   dependencies:
     hls.js "1.5.8"
 
