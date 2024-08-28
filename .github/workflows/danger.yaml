@@ -1,0 +1,14 @@
+name: danger.js
+on: [pull_request]
+jobs:
+  danger-js:
+    runs-on: ubuntu-latest
+    name: DangerJS PR validation
+    steps:
+      - uses: actions/checkout@v4
+      - id: danger
+        uses: flowplayer/playback-github-actions/danger@main
+        with:
+          node-version: "20"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
