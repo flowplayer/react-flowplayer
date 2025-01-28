@@ -15,7 +15,7 @@
 
 ### Resources
 <!-- [Documentation](https://developer.wowza.com/docs/wowza-flowplayer/guides/add-the-player-using-typescript.md/) -->
-* [Examples and Guides](https://developer.wowza.com/docs/wowza-flowplayer/player/embed/embed-with-standalone/#use-npm)
+* [Examples and Guides](https://developer.wowza.com/docs/wowza-flowplayer/player/components/react/)
 * [Releases](https://github.com/flowplayer/react-flowplayer/releases)
 * [Support](https://www.wowza.com/support)
 

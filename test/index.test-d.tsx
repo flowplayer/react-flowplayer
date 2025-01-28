@@ -1,11 +1,11 @@
 import { expectType, expectError } from "tsd";
 import Flowplayer, { useFlowplayer } from "../lib";
-import React, { useRef } from "react";
+import React, { RefObject, useRef } from "react";
 import { Player } from "@flowplayer/player";
 
 // - useFlowplayer returns Player instance -
-const playerRef = useRef<HTMLDivElement>(null);
-const playerApi = useFlowplayer(playerRef);
+const playerRef = useRef<HTMLDivElement|null>(null);
+const playerApi = useFlowplayer(playerRef as RefObject<HTMLDivElement>);
 expectType<Player | null>(playerApi);
 
 // - basic initalization -

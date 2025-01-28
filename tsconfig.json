@@ -1,17 +1,20 @@
 {
-    "include": [
-        "src/*",
-        "demo/index.d.ts"
-    ],
-    "exclude": [
-        "test/**/*.test-d.tsx" // we have a separate task where types are tested
-    ],
-    "compilerOptions": {
-        "target": "es2015",
-        "jsx": "react",
-        "allowSyntheticDefaultImports": true,
-        "strict": true,
-        "outDir": "./lib",
-        "moduleResolution": "node"
-    }
+  "include": [
+    "src/*",
+    "demo/index.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "test/**/*.test-d.tsx" // we have a separate task where types are tested
+  ],
+  "compilerOptions": {
+    "target": "es2015",
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "outDir": "./lib",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+  },
+  "$schema": "https://json.schemastore.org/tsconfig",
 }
