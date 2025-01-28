@@ -1,5 +1,5 @@
 # react-flowplayer
-![React version](https://img.shields.io/badge/react->=17.0.2-green?style=flat)
+![React version](https://img.shields.io/badge/react->=17.0.2-58c4dc?style=flat)
 [![NPM version](https://img.shields.io/npm/v/@flowplayer/react-flowplayer.svg?style=flat)](https://npmjs.com/package/@flowplayer/react-flowplayer) 
 [![NPM downloads](https://img.shields.io/npm/dm/@flowplayer/react-flowplayer.svg?style=flat)](https://npmjs.com/package/@flowplayer/react-flowplayer)
 
