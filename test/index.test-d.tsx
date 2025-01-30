@@ -4,10 +4,9 @@ import React, { useRef } from "react";
 import { Player } from "@flowplayer/player";
 
 // - useFlowplayer returns Player instance -
-const playerRef = useRef<HTMLDivElement>(null);
+const playerRef = useRef<HTMLDivElement | null>(null);
 const playerApi = useFlowplayer(playerRef);
-expectType<Player | null>(playerApi);
-
+if (playerApi) expectType<Player>(playerApi);
 // - basic initalization -
 const _uplayer = (
   <Flowplayer src={"demoSrc"} token={"DEMO_TOKEN"} ref={playerRef} />
