@@ -21,8 +21,6 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - name: Authenticate with private NPM package
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.PLAYBACK_NPM_PUBLISHING_TOKEN }}" > ~/.npmrc
       - name: yarn install
         run: yarn install --immutable
       - name: build
