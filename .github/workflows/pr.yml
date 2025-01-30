@@ -1,9 +1,9 @@
-name: test
+name: pr
 # Triggers the workflow on push or pull request events
 on: [pull_request]
 
 jobs:
-  danger-bot:
+  test-types:
     runs-on: ubuntu-latest
     name: run typespec
     steps:
@@ -21,8 +21,6 @@ jobs:
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
-      - name: Authenticate with private NPM package
-        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.PLAYBACK_NPM_PUBLISHING_TOKEN }}" > ~/.npmrc
       - name: yarn install
         run: yarn install --immutable
       - name: build
