@@ -1,9 +1,9 @@
-name: test
+name: pr
 # Triggers the workflow on push or pull request events
 on: [pull_request]
 
 jobs:
-  danger-bot:
+  test-types:
     runs-on: ubuntu-latest
     name: run typespec
     steps:
