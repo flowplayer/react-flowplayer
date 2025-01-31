@@ -39,7 +39,8 @@ const Main = () => {
   // Listen to player events for the demo
   useEffect(() => {
     if (!playerApi) return;
-    playerApi.on([PAUSE, PLAYING], stateHandler);
+    playerApi.on(PAUSE, stateHandler);
+    playerApi.on(PLAYING, stateHandler);
 
     return () => {
       // Cleanup on unmount
