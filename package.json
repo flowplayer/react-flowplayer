@@ -7,6 +7,7 @@
   "author": "Flowplayer AB <info@flowplayer.com>",
   "license": "MIT",
   "private": false,
+  "types": "index.d.ts",
   "scripts": {
     "build": "tsc -d",
     "dev": "webpack serve -c demo/webpack.config.js",
