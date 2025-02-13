@@ -8,11 +8,10 @@
   ],
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "declaration": true,
+    "declaration": false,
     "jsx": "react",
     "moduleResolution": "node",
     "outDir": "./lib",
-    "rootDir": ".",
     "skipLibCheck": true,
     "strict": true,
     "target": "es2015",
