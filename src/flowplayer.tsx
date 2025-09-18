@@ -1,8 +1,9 @@
 import type { ForwardedRef } from "react";
-import type { Config, ConfigWith } from "@flowplayer/player";
+import type { Config } from "@flowplayer/player";
 
 import React, { useEffect, forwardRef, useRef, useImperativeHandle } from "react";
 import flowplayer from "@flowplayer/player";
+import { trackBehaviorUsage } from "./usage";
 
 type KeyValue = Record<string, any>;
 
@@ -29,6 +30,8 @@ const Flowplayer = (props: Props, receivedRef: ForwardedRef<HTMLDivElement>) => 
     if (!ref.current) return;
     if (!token) return;
     const api = flowplayer(ref?.current, { token, ...opts });
+    trackBehaviorUsage(api, "flowplayer-component-mounted");
+
     return () => {
       api.destroy();
       if (ref?.current) ref.current.innerHTML = "";
