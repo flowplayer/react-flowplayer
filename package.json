@@ -21,7 +21,7 @@
     "react": ">= 17.0.2"
   },
   "devDependencies": {
-    "@flowplayer/player": "^3.21.0",
+    "@flowplayer/player": "^3.31.0",
     "@types/react": "^16.9.55",
     "@types/react-dom": "^16.9.9",
     "css-loader": "^7.1.2",
